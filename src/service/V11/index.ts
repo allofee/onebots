@@ -80,8 +80,10 @@ export class V11 extends EventEmitter implements OneBot.Base {
     }
 
     private startHttp() {
-        this.oneBot.app.router.all(new RegExp(`^${this.path}/(.*)$`), this._httpRequestHandler.bind(this))
-        this.logger.mark(`开启http服务器成功，监听:http://127.0.0.1:${this.oneBot.app.config.port}${this.path}`)
+        // this.oneBot.app.router.all(new RegExp(`^${this.path}/(.*)$`), this._httpRequestHandler.bind(this))
+        // this.logger.mark(`开启http服务器成功，监听:http://127.0.0.1:${this.oneBot.app.config.port}${this.path}`)
+        this.oneBot.app.router.all(new RegExp(`^(.*)$`), this._httpRequestHandler.bind(this))
+        this.logger.mark(`开启http服务器成功，监听:http://127.0.0.1:${this.oneBot.app.config.port}`)
     }
 
     private startHttpReverse(config: Config.HttpReverseConfig) {
